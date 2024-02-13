@@ -19,7 +19,7 @@ export default function save({attributes}) {
 	return (
 		<div { ...useBlockProps.save() }>
 			{attributes.carItems.length >=3 &&
-			<div className = 'ctc-image-carousel' style={{height:attributes.carHeight+'px', width:attributes.carWidth+'px'}} >
+			<div className = 'ctc-image-carousel' style={{marginLeft:'auto',marginRight:'auto',display:'block',height:attributes.carHeight+'px', width:attributes.carWidth+'px'}} >
               {
 				attributes.carItems.map(x=><img src={x.url}/>)
 			  }
