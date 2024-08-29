@@ -21,7 +21,7 @@ export default function save({attributes}) {
 			{attributes.carItems.length >=3 &&
 			<div className = 'ctc-image-carousel' style={{marginLeft:'auto',marginRight:'auto',display:'block',height:attributes.carHeight+'px', width:attributes.carWidth+'px'}} >
               {
-				attributes.carItems.map(x=><img src={x.url}/>)
+				attributes.carItems.map(x=><img src={x.url} title={x.caption}/>)
 			  }
 			</div>
 			}

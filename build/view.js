@@ -1,1 +1,441 @@
-(()=>{"use strict";class e{constructor(e,t){Array.from(document.querySelectorAll(e)).map(((e,l)=>this.prepCarousel(e,l,t)))}prepCarousel(e,t,l){let r=e.offsetWidth,i=e.offsetHeight,a={},n=Array.from(e.querySelectorAll("img"));n.map(((e,t)=>e.style.display="none"));let o=document.createElement("div");o.style=`width:${.42*r}px;height:${.7*i}px;z-index:400;display:inline-block;position:absolute;margin-top:${.15*i}px;margin-left:0px;background :rgba(0, 0 , 0, 1) url("") no-repeat center; background-size:cover;box-shadow:0px 5px 10px 2px black;`,a.prevThree=o,e.appendChild(o);let p=document.createElement("div");p.style=`width:${.49*r}px;height:${.8*i}px;z-index:500;display:inline-block;position:absolute;margin-top:${.1*i}px;margin-left:${.06*r}px;background :rgba(0, 0 , 0, 1) url("") no-repeat center; background-size:cover;box-shadow:0px 10px 15px 2px black;`,a.prevTwo=p,e.appendChild(p);let s=document.createElement("div");s.style=`width:${.63*r}px;height:${.9*i}px;z-index:700;display:inline-block;position:absolute;margin-top:${.05*i}px;margin-left:${.14*r}px;background :rgba(0, 0 , 0, 1) url("") no-repeat center; background-size:cover;box-shadow:0px 15px 20px 2px black;`,a.prevOne=s,e.appendChild(s);let d=document.createElement("div");d.style=`width:${.52*r}px;height:${i}px;z-index:1000;display:inline-block;position:absolute;margin-top:0px;margin-left:${.24*r}px;background :rgba(0, 0 , 0, 1) url("") no-repeat center; background-size:contain;box-shadow:0px 20px 25px 2px black;`,a.mainDiv=d,e.appendChild(d);let g=document.createElement("div");g.style=`width:${.63*r}px;height:${.9*i}px;z-index:700;display:inline-block;position:absolute;margin-top:${.05*i}px;margin-left:${.24*r}px;background :rgba(0, 0 , 0, 1) url("") no-repeat center; background-size:cover;box-shadow:0px 15px 20px 2px black;`,a.nextOne=g,e.appendChild(g);let x=document.createElement("div");x.style=`width:${.49*r}px;height:${.8*i}px;z-index:500;display:inline-block;position:absolute;margin-top:${.1*i}px;margin-left:${.45*r}px;background :rgba(0, 0 , 0, 1) url("") no-repeat center; background-size:cover;box-shadow:0px 10px 15px 2px black;`,a.nextTwo=x,e.appendChild(x);let c=document.createElement("div");c.style=`width:${.42*r}px;height:${.7*i}px;z-index:400;display:inline-block;position:absolute;margin-top:${.15*i}px;margin-left:${.58*r};background :rgba(0, 0 , 0, 1) url("") no-repeat center; background-size:cover;box-shadow:0px 5px 10px 2px black;`,a.nextThree=c,e.appendChild(c),this.createCarousel(0,n,a,t,l);for(let e in a)"mainDiv"!=e&&(a[e].addEventListener("click",(e=>this.createCarousel(parseInt(e.target.getAttribute("data-num")),n,a,t,l))),a[e].addEventListener("mouseenter",(e=>e.target.style.border="1px dotted rgba(0,0,0,0)")),a[e].addEventListener("mouseleave",(e=>e.target.style.border="")));null!=l&&"function"==typeof l.callBack&&l.callBack(e),setTimeout((()=>window.dispatchEvent(new Event("resize"))),50),window.addEventListener("resize",(()=>this.adjustOnResize(e,a,t)))}createCarousel(e,t,l,r,i){let a,n,o,p,s,d;a=0==e?t.length-3:1==e?t.length-2:2==e?t.length-1:e-3,n=0==e?t.length-2:1==e?t.length-1:e-2,o=0==e?t.length-1:e-1,p=e==t.length-1?0:e+1,s=e==t.length-1?1:e==t.length-2?0:e+2,d=e==t.length-1?2:e==t.length-2?1:e==t.length-3?0:e+3,l.prevThree.style.backgroundImage=`url('${t[a].src}')`,l.prevThree.title=null!=t[a].title?t[a].title:"",l.prevThree.setAttribute("data-num",a),l.prevTwo.style.backgroundImage=`url('${t[n].src}')`,l.prevTwo.title=null!=t[n].title?t[n].title:"",l.prevTwo.setAttribute("data-num",n),l.prevOne.style.backgroundImage=`url('${t[o].src}')`,l.prevOne.title=null!=t[o].title?t[o].title:"",l.prevOne.setAttribute("data-num",o);let g=new Image;g.src=t[e].src,g.title=null!=t[e].title?t[e].title:"",l.mainDiv.style.backgroundImage="url('')";let x=l.mainDiv.querySelector("#img-loading-"+r);if(null==x){x=document.createElement("div"),x.id=`img-loading-${r}`,x.style=`margin-left:${(l.mainDiv.offsetWidth-40)/2}px;margin-top:${(l.mainDiv.offsetHeight-40)/2}px;height:40px;width:40px;border-radius:50%;border-color:rgba(255,255,255,1);border-style: solid; border-width: 3px;z-index:1100; `,x.setAttribute("data-wait","left"),l.mainDiv.appendChild(x);var c=setInterval((()=>{switch(x.getAttribute("data-wait")){case"left":x.setAttribute("data-wait","top"),x.style.borderColor="rgba(255,255,255,0.5)",x.style.borderTop="3px solid  rgba(255,255,255,0.8)";break;case"top":x.setAttribute("data-wait","right"),x.style.borderColor="rgba(255,255,255,0.5)",x.style.borderRight="3px solid  rgba(255,255,255,0.8)";break;case"right":x.setAttribute("data-wait","bottom"),x.style.borderColor="rgba(255,255,255,0.5)",x.style.borderBottom="3px solid  rgba(255,255,255,0.8)";break;case"bottom":x.setAttribute("data-wait","left"),x.style.borderColor="rgba(255,255,255,0.5)",x.style.borderLeft="3px solid  rgba(255,255,255,0.8)"}}),400)}g.addEventListener("load",(e=>{clearInterval(c),l.mainDiv.removeChild(x),l.mainDiv.style.backgroundImage=`url('${e.target.src}')`,l.mainDiv.title=null!=e.target.title?e.target.title:""})),l.nextOne.style.backgroundImage=`url('${t[p].src}')`,l.nextOne.title=null!=t[p].title?t[p].title:"",l.nextOne.setAttribute("data-num",p),l.nextTwo.style.backgroundImage=`url('${t[s].src}')`,l.nextTwo.title=null!=t[s].title?t[s].title:"",l.nextTwo.setAttribute("data-num",s),l.nextThree.style.backgroundImage=`url('${t[d].src}')`,l.nextThree.title=null!=t[d].title?t[d].title:"",l.nextThree.setAttribute("data-num",d)}adjustOnResize(e,t,l){let r=e.offsetWidth,i=e.offsetHeight,a=t.prevThree;a.style.width=.42*r+"px",a.style.height=.7*i+"px",a.style.marginTop=.15*i+"px",a.style.marginLeft="0px";let n=t.prevTwo;n.style.width=.49*r+"px",n.style.height=.8*i+"px",n.style.marginTop=.1*i+"px",n.style.marginLeft=.06*r+"px";let o=t.prevOne;o.style.width=.63*r+"px",o.style.height=.9*i+"px",o.style.marginTop=.05*i+"px",o.style.marginLeft=.14*r+"px";let p=t.mainDiv;p.style.width=.52*r+"px",p.style.height=`${i}px`,p.style.marginTop="0px",p.style.marginLeft=.24*r+"px";let s=p.querySelector("#img-loading-"+l);null!=s&&(s.style.marginLeft=(p.offsetWidth-40)/2+"px",s.style.marginTop=(p.offsetHeight-40)/2+"px");let d=t.nextOne;d.style.width=.63*r+"px",d.style.height=.9*i+"px",d.style.marginTop=.05*i+"px",d.style.marginLeft=.24*r+"px";let g=t.nextTwo;g.style.width=.49*r+"px",g.style.height=.8*i+"px",g.style.marginTop=.1*i+"px",g.style.marginLeft=.45*r+"px";let x=t.nextThree;x.style.width=.42*r+"px",x.style.height=.7*i+"px",x.style.marginTop=.15*i+"px",x.style.marginLeft=.58*r+"px"}}window.addEventListener("DOMContentLoaded",(()=>{new e(".ctc-image-carousel")}))})();
+/******/ (() => { // webpackBootstrap
+/******/ 	"use strict";
+/******/ 	var __webpack_modules__ = ({
+
+/***/ "./node_modules/images-carousel/image-carousel.js":
+/*!********************************************************!*\
+  !*** ./node_modules/images-carousel/image-carousel.js ***!
+  \********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   imageCarousel: () => (/* binding */ imageCarousel)
+/* harmony export */ });
+/*
+ * 
+ * 
+ * 
+ * Image carousel
+ *  Images  carousel library written in vanilla js
+ * https://ujwolbastakoti.wordpress.com/
+ * MIT license
+ * 
+ * 
+ * 
+ */
+
+ class imageCarousel{
+    constructor(sel,param1){
+        Array.from(document.querySelectorAll(sel)).map((x,i)=>this.prepCarousel(x , i, param1))
+    }
+
+    /*
+    * Prepare carousel 
+    *
+    *@param gal Image gallery object
+    *@param galNum gallery number
+    *@param param1 Additional settings for carousel
+    *
+    */
+    prepCarousel(gal,galNum,param1){ 
+
+      
+        let maxWidth = gal.offsetWidth;
+        let maxHeight = gal.offsetHeight;
+        let carDivsObj = {};
+
+
+        let imgs = Array.from(gal.querySelectorAll('img'));
+        imgs.map((x,i)=>x.style.display ='none')
+         
+        let prevThreeDiv =  document.createElement('div');
+             prevThreeDiv.style = `width:${(0.42)*maxWidth}px;height:${0.7*maxHeight}px;z-index:400;display:inline-block;position:absolute;margin-top:${0.15*maxHeight}px;margin-left:0px;background :rgba(0, 0 , 0, 1) url("") no-repeat center; background-size:cover;box-shadow:0px 5px 10px 2px black;`;
+             carDivsObj.prevThree = prevThreeDiv,
+             gal.appendChild( prevThreeDiv);
+
+        let prevTwoDiv =  document.createElement('div');
+             prevTwoDiv.style = `width:${(0.49)*maxWidth}px;height:${0.8*maxHeight}px;z-index:500;display:inline-block;position:absolute;margin-top:${0.1*maxHeight}px;margin-left:${0.06*maxWidth}px;background :rgba(0, 0 , 0, 1) url("") no-repeat center; background-size:cover;box-shadow:0px 10px 15px 2px black;`;
+             carDivsObj.prevTwo = prevTwoDiv,
+             gal.appendChild( prevTwoDiv);
+
+        let prevOneDiv =  document.createElement('div');
+             prevOneDiv.style = `width:${(0.63)*maxWidth}px;height:${0.9*maxHeight}px;z-index:700;display:inline-block;position:absolute;margin-top:${0.05*maxHeight}px;margin-left:${0.14*maxWidth}px;background :rgba(0, 0 , 0, 1) url("") no-repeat center; background-size:cover;box-shadow:0px 15px 20px 2px black;`;
+             carDivsObj.prevOne = prevOneDiv;  
+             gal.appendChild( prevOneDiv);
+         
+        let mainDiv =  document.createElement('div');
+             mainDiv.style = `width:${0.52*maxWidth}px;height:${maxHeight}px;z-index:1000;display:inline-block;position:absolute;margin-top:0px;margin-left:${0.24*maxWidth}px;background :rgba(0, 0 , 0, 1) url("") no-repeat center; background-size:contain;box-shadow:0px 20px 25px 2px black;`;
+             carDivsObj.mainDiv=mainDiv;
+             gal.appendChild( mainDiv);
+
+        let nextOneDiv =  document.createElement('div');
+            nextOneDiv.style = `width:${(0.63)*maxWidth}px;height:${0.9*maxHeight}px;z-index:700;display:inline-block;position:absolute;margin-top:${0.05*maxHeight}px;margin-left:${0.24*maxWidth}px;background :rgba(0, 0 , 0, 1) url("") no-repeat center; background-size:cover;box-shadow:0px 15px 20px 2px black;`;
+            carDivsObj.nextOne = nextOneDiv;
+            gal.appendChild( nextOneDiv);
+
+        let nextTwoDiv =  document.createElement('div');
+            nextTwoDiv.style = `width:${(0.49)*maxWidth}px;height:${0.8*maxHeight}px;z-index:500;display:inline-block;position:absolute;margin-top:${0.1*maxHeight}px;margin-left:${0.45*maxWidth}px;background :rgba(0, 0 , 0, 1) url("") no-repeat center; background-size:cover;box-shadow:0px 10px 15px 2px black;`;
+            carDivsObj.nextTwo=nextTwoDiv;
+            gal.appendChild( nextTwoDiv);
+
+
+        let nextThreeDiv =  document.createElement('div');
+            nextThreeDiv.style = `width:${(0.42)*maxWidth}px;height:${0.7*maxHeight}px;z-index:400;display:inline-block;position:absolute;margin-top:${0.15*maxHeight}px;margin-left:${0.58*maxWidth};background :rgba(0, 0 , 0, 1) url("") no-repeat center; background-size:cover;box-shadow:0px 5px 10px 2px black;`;
+            carDivsObj.nextThree = nextThreeDiv,
+            gal.appendChild( nextThreeDiv);    
+
+
+            this.createCarousel(0,imgs,carDivsObj,galNum,param1);
+
+            for (let i in carDivsObj){
+                if ('mainDiv' != i){
+                    carDivsObj[i].addEventListener('click', event=>this.createCarousel(parseInt(event.target.getAttribute('data-num')), imgs, carDivsObj,galNum, param1 ));
+                    carDivsObj[i].addEventListener('mouseenter', event=>event.target.style.border ='1px dotted rgba(0,0,0,0)')
+                    carDivsObj[i].addEventListener('mouseleave', event=>event.target.style.border ='')
+                    
+                }
+            }
+
+            if(undefined != param1  && 'function' == typeof(param1.callBack)){
+           
+                param1.callBack(gal);
+    
+        } 
+
+            setTimeout(()=>window.dispatchEvent(new Event('resize')),50);
+         
+            window.addEventListener('resize', ()=>this.adjustOnResize(gal, carDivsObj,galNum)) 
+    }
+    /*
+    * Create carousel 
+    *
+    *@param i Image number
+    *@param gal Image gallery object
+    *@param carDivs Carousel divs object
+    *@param galNum Gallery number
+    *@param param1 Additional settings for carousel
+    *
+    */
+    createCarousel(i,gal,carDivs, galNum, param1){
+
+        let prevThreeNum ; 
+            if(i == 0){prevThreeNum  =  gal.length-3}
+            else if(i == 1){prevThreeNum  = gal.length-2}
+            else if(i == 2){prevThreeNum  = gal.length-1}
+            else{prevThreeNum  = i-3}
+
+
+        let prevTwoNum ;
+            if(i == 0){prevTwoNum =  gal.length-2}
+            else if(i == 1){prevTwoNum = gal.length-1}
+            else{prevTwoNum = i-2}
+
+
+        let prevOneNum ;
+            if(i == 0){prevOneNum =  gal.length-1}
+            else{prevOneNum  = i-1} 
+
+        let nextOneNum ;
+            if(i == gal.length-1){nextOneNum = 0}
+            else{nextOneNum = i+1} 
+
+
+        let nextTwoNum;
+            if(i == gal.length-1){nextTwoNum= 1}
+            else if(i == gal.length-2){nextTwoNum= 0}
+            else{nextTwoNum = i+2}
+
+        let nextThreeNum;
+            if(i == gal.length-1){nextThreeNum= 2}
+            else if(i == gal.length-2){nextThreeNum= 1}
+            else if(i == gal.length-3){nextThreeNum= 0}
+            else{nextThreeNum = i+3}   
+       
+
+        carDivs.prevThree.style.backgroundImage = `url('${gal[prevThreeNum ].src}')`; 
+        carDivs.prevThree.title = undefined != gal[prevThreeNum].title ? gal[prevThreeNum].title:'';
+        carDivs.prevThree.setAttribute('data-num',prevThreeNum)    
+
+        carDivs.prevTwo.style.backgroundImage = `url('${gal[prevTwoNum ].src}')`; 
+        carDivs.prevTwo.title = undefined != gal[prevTwoNum].title ? gal[prevTwoNum].title:'';
+        carDivs.prevTwo.setAttribute('data-num',prevTwoNum)
+
+        carDivs.prevOne.style.backgroundImage = `url('${gal[prevOneNum].src}')`; 
+        carDivs.prevOne.title = undefined != gal[prevOneNum].title ? gal[prevOneNum].title:'';
+        carDivs.prevOne.setAttribute('data-num',prevOneNum)  
+
+        let mainImg = new Image();
+            mainImg.src  = gal[i].src;
+            mainImg.title =  undefined != gal[i].title ? gal[i].title:''; 
+
+            carDivs.mainDiv.style.backgroundImage = `url('')`;
+
+        let loadingDivCir=   carDivs.mainDiv.querySelector('#img-loading-'+galNum);
+        
+        let mainImgTitleDiv = carDivs.mainDiv.querySelector('#mainImgTitle');
+
+        
+
+        
+        if(null != mainImgTitleDiv){
+           
+            mainImgTitleDiv.remove();
+        }
+        
+
+         if(null == loadingDivCir){
+                    
+                loadingDivCir =  document.createElement('div');
+                loadingDivCir.id = `img-loading-${galNum}`;
+                loadingDivCir.style = `margin-left:${(carDivs.mainDiv.offsetWidth-40)/2}px;margin-top:${(carDivs.mainDiv.offsetHeight-40)/2}px;height:40px;width:40px;border-radius:50%;border-color:rgba(255,255,255,1);border-style: solid; border-width: 3px;z-index:1100; `;
+                loadingDivCir.setAttribute('data-wait','left');
+                carDivs.mainDiv.appendChild(loadingDivCir);
+
+            var loadingInt = setInterval(()=>{
+                switch( loadingDivCir.getAttribute('data-wait')){
+                    case 'left': 
+                        loadingDivCir.setAttribute('data-wait','top');
+                        loadingDivCir.style.borderColor = 'rgba(255,255,255,0.5)';
+                        loadingDivCir.style.borderTop = '3px solid  rgba(255,255,255,0.8)';
+                    break;
+                    case 'top':
+                            loadingDivCir.setAttribute('data-wait','right');
+                            loadingDivCir.style.borderColor = 'rgba(255,255,255,0.5)';
+                            loadingDivCir.style.borderRight = '3px solid  rgba(255,255,255,0.8)';
+                    break;
+                    case 'right':
+                            loadingDivCir.setAttribute('data-wait','bottom');
+                            loadingDivCir.style.borderColor = 'rgba(255,255,255,0.5)';
+                            loadingDivCir.style.borderBottom = '3px solid  rgba(255,255,255,0.8)';
+
+                    break;
+                    case 'bottom':
+                            loadingDivCir.setAttribute('data-wait','left');
+                            loadingDivCir.style.borderColor = 'rgba(255,255,255,0.5)';
+                            loadingDivCir.style.borderLeft = '3px solid  rgba(255,255,255,0.8)';
+                    break;
+                }
+                
+            }, 400);
+        }
+
+        
+        mainImg.addEventListener('load',(event)=>{
+            clearInterval(loadingInt);
+            carDivs.mainDiv.removeChild(loadingDivCir) 
+            carDivs.mainDiv.style.backgroundImage = `url('${event.target.src}')`;
+            
+            let imgTitleCont = undefined != event.target.title ? event.target.title:'';
+
+            if('' != imgTitleCont){
+                let imgTitle =  document.createElement('div');
+                imgTitle.id = 'mainImgTitle';
+                imgTitle.style= `margin-top:${carDivs.mainDiv.offsetHeight-25}px; height:25px;margin-bottom:0px;text-align:center;color:rgba(255,255,255,1); background-color:rgba(0,0,0,0.5);margin-left:auto;margin-right:auto;display:block;`;
+                imgTitle.textContent = imgTitleCont;
+                carDivs.mainDiv.appendChild(imgTitle); 
+            }
+            
+
+
+               
+
+
+            carDivs.mainDiv.title = undefined != event.target.title ? event.target.title:'';
+         })   
+       
+
+
+        carDivs.nextOne.style.backgroundImage = `url('${gal[nextOneNum].src}')`; 
+        carDivs.nextOne.title = undefined != gal[nextOneNum].title ? gal[nextOneNum].title:'';
+        carDivs.nextOne.setAttribute('data-num',nextOneNum);
+
+        carDivs.nextTwo.style.backgroundImage = `url('${gal[nextTwoNum].src}')`; 
+        carDivs.nextTwo.title =  undefined != gal[nextTwoNum].title ? gal[nextTwoNum].title:'';
+        carDivs.nextTwo.setAttribute('data-num',nextTwoNum); 
+
+        carDivs.nextThree.style.backgroundImage = `url('${gal[nextThreeNum].src}')`; 
+        carDivs.nextThree.title =  undefined != gal[nextThreeNum].title ? gal[nextThreeNum].title:'';
+        carDivs.nextThree.setAttribute('data-num',nextThreeNum);
+
+
+
+        
+       
+        
+    }
+
+
+    /*
+    * Adjust carousel on resize
+    *
+    *@param gal Image gallery object
+    *@param carDivs Carousel divs object
+    *@param param1 Additional settings for carousel
+    *
+    */
+
+    adjustOnResize(gal, carDivObj,galNum){
+
+        let maxWidth = gal.offsetWidth;
+        let maxHeight = gal.offsetHeight;
+
+
+
+        let prevThreeDiv =  carDivObj.prevThree;
+        prevThreeDiv.style.width = `${(0.42)*maxWidth}px`;
+        prevThreeDiv.style.height = `${0.7*maxHeight}px` ;
+        prevThreeDiv.style.marginTop =  `${0.15*maxHeight}px`;
+        prevThreeDiv.style.marginLeft =  `0px`;
+
+            let prevTwoDiv =  carDivObj.prevTwo;
+                prevTwoDiv.style.width = `${(0.49)*maxWidth}px`;
+                prevTwoDiv.style.height = `${0.8*maxHeight}px` ;
+                prevTwoDiv.style.marginTop =  `${0.1*maxHeight}px`;
+                prevTwoDiv.style.marginLeft =  `${0.06*maxWidth}px`;
+            
+            let prevOneDiv =   carDivObj.prevOne;
+                prevOneDiv.style.width = `${(0.63)*maxWidth}px`;
+                prevOneDiv.style.height = `${0.9*maxHeight}px` ;
+                prevOneDiv.style.marginTop =  `${0.05*maxHeight}px`;
+                prevOneDiv.style.marginLeft =  `${0.14*maxWidth}px`;
+            
+            
+            let mainDiv =   carDivObj.mainDiv;
+                mainDiv.style.width = `${0.52*maxWidth}px`;
+                mainDiv.style.height = `${maxHeight}px`; 
+                mainDiv.style.marginTop =  `0px`;
+                mainDiv.style.marginLeft =  `${0.24*maxWidth}px`;
+
+            let loadingDiv =   mainDiv.querySelector('#img-loading-'+galNum); 
+                if(undefined != loadingDiv){
+                    loadingDiv.style.marginLeft = `${(mainDiv.offsetWidth-40)/2}px`;
+                    loadingDiv.style.marginTop = `${(mainDiv.offsetHeight-40)/2}px`;
+                }  
+
+        
+            let nextOneDiv =   carDivObj.nextOne;
+                nextOneDiv.style.width = `${(0.63)*maxWidth}px`;
+                nextOneDiv.style.height = `${0.9*maxHeight}px`; 
+                nextOneDiv.style.marginTop =  `${0.05*maxHeight}px`;
+                nextOneDiv.style.marginLeft =  `${0.24*maxWidth}px`;
+            
+            let nextTwoDiv =  carDivObj.nextTwo;
+                nextTwoDiv.style.width = `${(0.49)*maxWidth}px`;
+                nextTwoDiv.style.height = `${0.8*maxHeight}px`; 
+                nextTwoDiv.style.marginTop =  `${0.1*maxHeight}px`;
+                nextTwoDiv.style.marginLeft =  `${0.45*maxWidth}px`;
+
+            let nextThreeDiv =  carDivObj.nextThree;
+                nextThreeDiv.style.width = `${(0.42)*maxWidth}px`;
+                nextThreeDiv.style.height = `${0.7*maxHeight}px`; 
+                nextThreeDiv.style.marginTop =  `${0.15*maxHeight}px`;
+                nextThreeDiv.style.marginLeft =  `${0.58*maxWidth}px`;     
+            
+
+
+    }
+
+}
+
+
+
+/***/ })
+
+/******/ 	});
+/************************************************************************/
+/******/ 	// The module cache
+/******/ 	var __webpack_module_cache__ = {};
+/******/ 	
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/ 		// Check if module is in cache
+/******/ 		var cachedModule = __webpack_module_cache__[moduleId];
+/******/ 		if (cachedModule !== undefined) {
+/******/ 			return cachedModule.exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = __webpack_module_cache__[moduleId] = {
+/******/ 			// no module.id needed
+/******/ 			// no module.loaded needed
+/******/ 			exports: {}
+/******/ 		};
+/******/ 	
+/******/ 		// Execute the module function
+/******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
+/******/ 	
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/ 	
+/************************************************************************/
+/******/ 	/* webpack/runtime/define property getters */
+/******/ 	(() => {
+/******/ 		// define getter functions for harmony exports
+/******/ 		__webpack_require__.d = (exports, definition) => {
+/******/ 			for(var key in definition) {
+/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
+/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
+/******/ 				}
+/******/ 			}
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
+/******/ 	(() => {
+/******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/make namespace object */
+/******/ 	(() => {
+/******/ 		// define __esModule on exports
+/******/ 		__webpack_require__.r = (exports) => {
+/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 			}
+/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/************************************************************************/
+var __webpack_exports__ = {};
+// This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
+(() => {
+/*!*********************!*\
+  !*** ./src/view.js ***!
+  \*********************/
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var images_carousel_image_carousel__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! images-carousel/image-carousel */ "./node_modules/images-carousel/image-carousel.js");
+
+/**
+ * Use this file for JavaScript code that you want to run in the front-end
+ * on posts/pages that contain this block.
+ *
+ * When this file is defined as the value of the `viewScript` property
+ * in `block.json` it will be enqueued on the front end of the site.
+ *
+ * Example:
+ *
+ * ```js
+ * {
+ *   "viewScript": "file:./view.js"
+ * }
+ * ```
+ *
+ * If you're not making any changes to this file because your project doesn't need any
+ * JavaScript running in the front-end, then you should delete this file and remove
+ * the `viewScript` property from `block.json`.
+ *
+ * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-metadata/#view-script
+ */
+
+/* eslint-disable no-console */
+window.addEventListener('DOMContentLoaded', () => {
+  new images_carousel_image_carousel__WEBPACK_IMPORTED_MODULE_0__.imageCarousel('.ctc-image-carousel');
+});
+/* eslint-enable no-console */
+})();
+
+/******/ })()
+;
+//# sourceMappingURL=view.js.map

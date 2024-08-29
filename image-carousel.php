@@ -2,9 +2,9 @@
 /**
  * Plugin Name:       CTC Image Carousel
  * Description:       Block to create image carousel
- * Requires at least: 6.4.3
+ * Requires at least: 6.6
  * Requires PHP:      7.0
- * Version:           0.1.0
+ * Version:           1.0.0
  * Author:            UjW0L
  * License:           GPL-2.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html

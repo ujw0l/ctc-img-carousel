@@ -56,7 +56,7 @@ export default function Edit({clientId ,attributes,setAttributes}) {
 		<div { ...useBlockProps() }>
 
 			<div id={`ctc-image-car-${attributes.clntId}`} ref={elRef} style={{display:'none'}}>
-               {attributes.carItems.map(x=><img src={x.url}/>)}
+               {attributes.carItems.map(x=><img src={x.url} title={x.caption}/>)}
 			</div>
 			<div>
 			<MediaUploadCheck>
